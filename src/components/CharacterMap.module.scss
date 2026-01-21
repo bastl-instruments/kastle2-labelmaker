@@ -1,0 +1,63 @@
+@use '../config.scss' as config;
+
+
+.characterMapContainer {
+    @media(min-width: config.$large-screen) {
+        overflow: auto;
+    }
+}
+
+.characterMap {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(2.5em, 1fr));
+    gap: 0.2em;
+    background-color: #111;
+    padding: 0.5em;
+    width: 100%;
+    max-height: 20em;
+    border: 1px solid #333;
+    opacity: 0.3;
+    transition: opacity 0.1s ease;
+
+    @media(min-width: config.$large-screen) {
+        max-height: none;
+    }
+
+    &.active {
+        opacity: 1;
+    }
+}
+
+.characterButton {
+    font-family: inherit;
+    background-color: #222;
+    color: #eee;
+    font-size: 1.5em;
+    border: 1px solid #444;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: #333;
+        border-color: #666;
+    }
+
+
+    &:focus {
+        outline: 2px solid #666;
+        outline-offset: 1px;
+    }
+
+    &:disabled {
+        background-color: #111;
+        color: #555;
+        border-color: #222;
+        cursor: not-allowed;
+    }
+
+
+}

@@ -1,0 +1,101 @@
+@use '../config.scss' as config;
+
+.app {
+
+    @media(min-width: config.$large-screen) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+    }
+}
+
+.leftPanel {
+    padding: 1.5rem;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 0; // Ensure flex child can shrink
+}
+
+.rightPanel {
+    background-color: #3b3c3b;
+    padding: 1.5rem;
+    text-align: center;
+    flex-shrink: 0;
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: column;
+
+    @media(min-width: config.$large-screen) {
+        width: 33%;
+        max-width: 33em;
+    }
+}
+
+.description {
+    width: 100%;
+    font-family: inherit;
+    font-size: 1em;
+    padding: 0.4em;
+    margin: 0 0 1em 0;
+    border: 1px solid #444;
+    box-sizing: border-box;
+    text-align: center;
+    text-transform: uppercase;
+    color: inherit;
+    background-color: #222;
+    min-height: 8lh;
+    text-align: left;
+    max-width: 100%;
+
+    &:focus {
+        outline: 2px solid #666;
+        outline-offset: 1px;
+    }
+}
+
+
+h1,
+h2,
+h3 {
+    text-align: center;
+    font-family: config.$font-primary;
+    font-weight: 800;
+    font-size: 1.3em;
+    margin: 0 0 0.4em 0;
+    text-transform: uppercase;
+}
+
+p {
+    margin: 0 0 0.5em 0;
+    text-transform: uppercase;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin: 0 0 1.5em 0;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.characterMapSection {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+
+    h2 {
+        flex-shrink: 0;
+    }
+
+    p {
+        flex-shrink: 0;
+    }
+}
