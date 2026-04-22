@@ -1,0 +1,198 @@
+@use '../config.scss' as config;
+
+.citadel {
+    width: 100%;
+    max-width: min(80vw, 80vh * 0.6295);
+    /* Maintain aspect ratio based on viewport */
+    aspect-ratio: 0.6295;
+    /* Modern way to maintain aspect ratio */
+    position: relative;
+    overflow: hidden;
+    container-type: inline-size;
+    /* Enable container queries for responsive font sizing */
+
+    img {
+        display: block;
+        width: 100%;
+    }
+
+    & .citadelHw {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+        pointer-events: none;
+    }
+}
+
+
+.label {
+    position: absolute;
+    border-radius: 2em;
+    font-size: 2.3vw;
+    /* Fallback: viewport-based font size */
+    font-size: 2.3cqw;
+    /* Preferred: container-based font size */
+    z-index: 10;
+    letter-spacing: 0.005em;
+
+    &:hover,
+    &:focus-within {
+        outline: 1px dashed pink;
+        outline-offset: 2px;
+        z-index: 25;
+    }
+
+    &.readonly {
+        background: none !important;
+        outline: none !important;
+        pointer-events: none;
+    }
+
+    &.align-center {
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    &.align-left {
+        transform: translate(0%, -50%);
+        text-align: left;
+    }
+
+    &.align-right {
+        transform: translate(-100%, -50%);
+        text-align: right;
+    }
+
+    &.font-title {
+        font-size: 3.23vw;
+        /* Fallback: viewport-based font size */
+        font-size: 3.63cqw;
+        /* Preferred: container-based font size */
+        font-weight: bold;
+        font-family: config.$font-primary;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: 0.04em;
+    }
+
+    &.font-heading {
+        font-size:2.8vw;
+        /* Fallback: viewport-based font size */
+        font-size: 2.8cqw;
+        /* Preferred: container-based font size */
+        font-weight: bold;
+        font-family: config.$font-primary;
+        font-weight: 800;
+        color: #fff;
+    }
+
+
+    &.font-emoji {
+        font-size: 4.5vw;
+        font-size: 4.5cqw;
+        filter: grayscale(100%) brightness(80%) contrast(200%);
+        opacity: 0.8;
+        padding: 0 !important;
+
+        &>input {
+            padding: 0;
+            min-width: 1em;
+        }
+    }
+
+    &.font-name-emoji {
+        font-size: 9vw;
+        font-size: 9cqw;
+        filter: sepia(100%) saturate(300%) hue-rotate(5deg) brightness(110%) contrast(130%);
+        opacity: 0.8;
+        padding: 0 !important;
+        color: #aaa;
+
+        &>input {
+            padding: 0;
+            min-width: 1em;
+        }
+    }
+
+    $debug-colors: false;
+
+    @if $debug-colors {
+        opacity: 0.7;
+
+        /* DEBUG COLORS */
+        &.white {
+            background-color: #1a3004;
+            color: #ddcc1a;
+            border-radius: 0;
+        }
+
+        &.white-inverse {
+            background-color: #74c6db;
+            color: #ddcc1a;
+        }
+
+        &.silver {
+            background-color: #1a3004;
+            color: #bf5ddd;
+        }
+
+        &.silver-inverse {
+            background-color: #bf5ddd;
+            color: #1a3004;
+        }
+    }
+
+    @else {
+
+        /* FINAL COLORS */
+
+        &.white {
+            // background-color: #3c3d3b;
+            color: #fff;
+        }
+
+        &.inverse,
+        &.white-inverse {
+            background-color: #fff;
+            color: #3c3d3b;
+        }
+
+        &.silver {
+            color: #c6c7c6;
+        }
+
+        &.silver-inverse {
+            background-color: #c6c7c6;
+            color: #3c3d3b;
+            font-family: config.$font-mono, sans-serif;
+        }
+    }
+
+
+    input {
+        text-align: inherit;
+        background-color: inherit;
+        border-radius: 2em;
+        font-family: inherit;
+        font-size: inherit;
+        border: none;
+        text-transform: uppercase;
+        line-height: 1;
+        font-weight: bold;
+        display: block;
+        color: inherit;
+        overflow: hidden;
+        padding: 0.1em 0.5em;
+        line-height: 1.1;
+        min-width: 2.8em;
+        width: 100%;
+        letter-spacing: inherit;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
