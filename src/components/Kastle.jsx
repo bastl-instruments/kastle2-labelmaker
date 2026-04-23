@@ -16,7 +16,7 @@ const fontWidths = {
 
 const debug_labels = false;
 
-export default function Kastle({ labels, setLabels, setFocusedLabelId, ref }) {
+export default function Kastle({ labels, setValue, setFocusedLabelId, ref }) {
   return (
     <div ref={ref} className={styles.kastle}>
       <img
@@ -62,13 +62,7 @@ export default function Kastle({ labels, setLabels, setFocusedLabelId, ref }) {
               onFocus={() => setFocusedLabelId(label.id)}
               onBlur={() => setFocusedLabelId(null)}
               onChange={(e) => {
-                const newLabels = labels.map(l => {
-                  if (l.id === label.id) {
-                    return { ...l, value: e.target.value };
-                  }
-                  return l;
-                });
-                setLabels(newLabels);
+                setValue(label.id, e.target.value);
               }}
             />
           </div>

@@ -17,7 +17,7 @@ const fontWidths = {
 
 const debug_labels = false;
 
-export default function Citadel({ labels, setLabels, setFocusedLabelId, ref }) {
+export default function Citadel({ labels, setValue, setFocusedLabelId, ref }) {
   return (
     <div ref={ref} className={styles.citadel}>
       <img
@@ -63,13 +63,7 @@ export default function Citadel({ labels, setLabels, setFocusedLabelId, ref }) {
               onFocus={() => setFocusedLabelId(label.id)}
               onBlur={() => setFocusedLabelId(null)}
               onChange={(e) => {
-                const newLabels = labels.map(l => {
-                  if (l.id === label.id) {
-                    return { ...l, value: e.target.value };
-                  }
-                  return l;
-                });
-                setLabels(newLabels);
+                setValue(label.id, e.target.value);
               }}
             />
           </div>

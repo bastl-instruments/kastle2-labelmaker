@@ -45,6 +45,9 @@ function App() {
 
   const DeviceComponent = devices.find(device => device.id === deviceId).component;
 
+  const setValue = (id, newValue) => {
+    setLabels(labels.map(label => label.id === id ? { ...label, value: newValue } : label));
+  };
 
   return (
     <div className={styles.app}>
@@ -52,7 +55,7 @@ function App() {
         <DeviceComponent
           ref={ref}
           labels={labels.filter(label => typeof label[deviceId] !== 'undefined').map(label => ({ ...label, ...label[deviceId] }))}
-          setLabels={setLabels}
+          setValue={setValue}
           setFocusedLabelId={setFocusedLabelId}
         />
       </div>
